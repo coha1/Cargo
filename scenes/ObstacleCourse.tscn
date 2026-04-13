@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://dm3si3eiteiog"]
+
+[sub_resource type="StandardMaterial3D" id="3"]
+albedo_color = Color(0.58, 0.52, 0.44, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0mr1n"]
+albedo_color = Color(0.28875548, 0.25232804, 0.20180452, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j502b"]
+albedo_color = Color(0.44842446, 0.61994267, 0.74215287, 1)
+roughness = 0.9
+
+[node name="FlatArea" type="Node3D" unique_id=917193365]
+
+[node name="OuterWall" type="CSGCombiner3D" parent="." unique_id=378011032]
+use_collision = true
+
+[node name="Outer" type="CSGCylinder3D" parent="OuterWall" unique_id=1649963938]
+radius = 121.0
+height = 8.0
+sides = 64
+material = SubResource("3")
+
+[node name="Inner" type="CSGCylinder3D" parent="OuterWall" unique_id=2131377792]
+operation = 2
+radius = 120.0
+height = 10.0
+sides = 64
+material = SubResource("3")
+
+[node name="InnerRing" type="CSGCombiner3D" parent="." unique_id=1818934769]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28.495636, 0)
+use_collision = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="InnerRing" unique_id=2134638360]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.55265, 0)
+radius = 100.0
+height = 50.0
+sides = 64
+cone = true
+material = SubResource("3")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="InnerRing" unique_id=2086092337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.887257, 0)
+operation = 2
+radius = 100.0
+height = 100.0
+sides = 64
+material = SubResource("3")
+
+[node name="Floor" type="CSGCombiner3D" parent="." unique_id=838987956]
+use_collision = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Floor" unique_id=311628667]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.0603275, 0)
+radius = 121.0
+height = 1.0
+sides = 64
+material = SubResource("StandardMaterial3D_0mr1n")
+
+[node name="FunboxA" type="CSGCombiner3D" parent="." unique_id=1599359346]
+transform = Transform3D(0.707, 0, -0.707, 0, 1, 0, 0.707, 0, 0.707, 42, -1.6504556, 18)
+use_collision = true
+
+[node name="FunboxAPyramid" type="CSGPolygon3D" parent="FunboxA" unique_id=1870969054]
+polygon = PackedVector2Array(0, 0, 12, 0, 10, 0.8, 0, 6)
+mode = 1
+spin_degrees = 360.0
+spin_sides = 4
+material = SubResource("StandardMaterial3D_j502b")
+
+[node name="FunboxACut" type="CSGBox3D" parent="FunboxA" unique_id=248932008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.0, 0)
+operation = 2
+size = Vector3(28, 3, 28)

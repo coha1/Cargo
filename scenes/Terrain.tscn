@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c4rg0terrain1"]
+
+[ext_resource type="Script" uid="uid://dterrain001gd" path="res://scripts/terrain.gd" id="1"]
+
+[node name="Terrain" type="Node3D"]
+script = ExtResource("1")
