@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b1sqh318cvk5l"]
+
+[ext_resource type="Script" uid="uid://eanwylisr2df" path="res://scripts/world.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/Car.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/HUD.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/Collectible.tscn" id="4"]
+[ext_resource type="Script" uid="uid://deyq3lunbaftq" path="res://scripts/camera_follow.gd" id="5"]
+
+[sub_resource type="Environment" id="6"]
+background_mode = 1
+background_color = Color(0.6, 0.75, 0.92, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.5, 0.55, 0.65, 1)
+ambient_light_energy = 0.5
+
+[node name="World" type="Node3D" unique_id=1168583943]
+script = ExtResource("1")
+collectible_scene = ExtResource("4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1712814225]
+transform = Transform3D(0.866, -0.354, 0.354, 0, 0.707, 0.707, -0.5, -0.612, 0.612, 0, 15, 0)
+light_energy = 1.2
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=670880132]
+environment = SubResource("6")
+
+[node name="Car" parent="." unique_id=1934986737 instance=ExtResource("2")]
+
+[node name="HUD" parent="." unique_id=341244667 instance=ExtResource("3")]
+
+[node name="CameraFollow" type="Node3D" parent="." unique_id=1209442867]
+script = ExtResource("5")
+
+[node name="Camera3D" type="Camera3D" parent="CameraFollow" unique_id=1369377213]
