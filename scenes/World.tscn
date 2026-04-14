@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" uid="uid://eanwylisr2df" path="res://scripts/world.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://b2fml86xjy1dp" path="res://scenes/Car.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/HUD.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://b5w0eoqvwxif4" path="res://scenes/HUD.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://scenes/Collectible.tscn" id="4"]
 [ext_resource type="Script" uid="uid://deyq3lunbaftq" path="res://scripts/camera_follow.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://dm3si3eiteiog" path="res://scenes/ObstacleCourse.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://c4rg0terrain1" path="res://scenes/Terrain.tscn" id="8"]
-[ext_resource type="Script" path="res://scripts/objective_manager.gd" id="9"]
-[ext_resource type="PackedScene" uid="uid://pickup_zone_cargo1" path="res://scenes/PickupZone.tscn" id="10"]
-[ext_resource type="PackedScene" uid="uid://delivery_zone_cargo1" path="res://scenes/DeliveryZone.tscn" id="11"]
+[ext_resource type="Script" uid="uid://curntqcje8qsv" path="res://scripts/objective_manager.gd" id="9"]
+[ext_resource type="PackedScene" path="res://scenes/PickupZone.tscn" id="10"]
+[ext_resource type="PackedScene" path="res://scenes/DeliveryZone.tscn" id="11"]
 
 [sub_resource type="Environment" id="6"]
 background_mode = 1
@@ -23,7 +23,7 @@ script = ExtResource("1")
 collectible_scene = ExtResource("4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1712814225]
-transform = Transform3D(0.866, -0.354, 0.354, 0, 0.707, 0.707, -0.5, -0.612, 0.612, 0, 15, 0)
+transform = Transform3D(0.86601907, -0.3535631, 0.3535593, 0, 0.70710295, 0.7071106, -0.500011, -0.61237127, 0.61236465, 0, 15, 0)
 light_energy = 1.2
 shadow_enabled = true
 
@@ -38,13 +38,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.819084, 122.00159)
 [node name="FlatArea" parent="." unique_id=1585086490 instance=ExtResource("7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 320)
 
-[node name="PickupZone" parent="." instance=ExtResource("10")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, -3.5, 310)
+[node name="PickupZone" parent="." unique_id=1912947046 instance=ExtResource("10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.91069, 3.5361824, 337.07047)
 
-[node name="DeliveryZone" parent="." instance=ExtResource("11")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95, -3.5, 320)
+[node name="DeliveryZone" parent="." unique_id=1104864494 instance=ExtResource("11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.35857, 1.6234264, 277.03146)
 
-[node name="ObjectiveManager" type="Node" parent="."]
+[node name="ObjectiveManager" type="Node" parent="." unique_id=115652795]
 script = ExtResource("9")
 card_path = NodePath("../HUD/ObjectiveCard")
 pickup_zone_path = NodePath("../PickupZone")
