@@ -6,7 +6,10 @@
 [ext_resource type="PackedScene" path="res://scenes/Collectible.tscn" id="4"]
 [ext_resource type="Script" uid="uid://deyq3lunbaftq" path="res://scripts/camera_follow.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://dm3si3eiteiog" path="res://scenes/ObstacleCourse.tscn" id="7"]
-[ext_resource type="PackedScene" path="res://scenes/Terrain.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://c4rg0terrain1" path="res://scenes/Terrain.tscn" id="8"]
+[ext_resource type="Script" path="res://scripts/objective_manager.gd" id="9"]
+[ext_resource type="PackedScene" uid="uid://pickup_zone_cargo1" path="res://scenes/PickupZone.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://delivery_zone_cargo1" path="res://scenes/DeliveryZone.tscn" id="11"]
 
 [sub_resource type="Environment" id="6"]
 background_mode = 1
@@ -30,10 +33,22 @@ environment = SubResource("6")
 [node name="HUD" parent="." unique_id=341244667 instance=ExtResource("3")]
 
 [node name="Terrain" parent="." unique_id=2011847203 instance=ExtResource("8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 79.54236)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.819084, 122.00159)
 
 [node name="FlatArea" parent="." unique_id=1585086490 instance=ExtResource("7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 320)
+
+[node name="PickupZone" parent="." instance=ExtResource("10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, -3.5, 310)
+
+[node name="DeliveryZone" parent="." instance=ExtResource("11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95, -3.5, 320)
+
+[node name="ObjectiveManager" type="Node" parent="."]
+script = ExtResource("9")
+card_path = NodePath("../HUD/ObjectiveCard")
+pickup_zone_path = NodePath("../PickupZone")
+delivery_zone_path = NodePath("../DeliveryZone")
 
 [node name="Car" parent="." unique_id=1934986737 instance=ExtResource("2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.344904, 276.31876)
@@ -43,20 +58,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 276.31876)
 script = ExtResource("5")
 
 [node name="Camera3D" type="Camera3D" parent="CameraFollow" unique_id=1369377213]
-
-[node name="Bridge" type="CSGCombiner3D" parent="." unique_id=840774535]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -42.455997, 214.12012)
-use_collision = true
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bridge" unique_id=1633224155]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
-radius = 50.0
-height = 10.0
-sides = 64
-
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Bridge" unique_id=1831071970]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
-operation = 2
-radius = 48.0
-height = 11.0
-sides = 64

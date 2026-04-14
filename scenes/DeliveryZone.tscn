@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://delivery_zone_cargo1"]
+
+[ext_resource type="Script" path="res://scripts/zone_marker.gd" id="1"]
+
+[node name="DeliveryZone" type="Area3D"]
+script = ExtResource("1")
+zone_label = "DELIVERY"
+zone_color = Color(0.95, 0.45, 0.12, 1)
+trigger_radius = 5.5

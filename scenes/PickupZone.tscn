@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://pickup_zone_cargo1"]
+
+[ext_resource type="Script" path="res://scripts/zone_marker.gd" id="1"]
+
+[node name="PickupZone" type="Area3D"]
+script = ExtResource("1")
+zone_label = "PICKUP"
+zone_color = Color(0.25, 0.92, 0.38, 1)
+trigger_radius = 5.5

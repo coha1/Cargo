@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 		_air_pitch_speed = 0.0
 		engine_force = throttle * engine_force_max
 		brake = 0.0
-		apply_central_force(Vector3.DOWN * ground_downforce)
+		#apply_central_force(Vector3.DOWN * ground_downforce)
 		_apply_ebrake(ebrake)
 		var steer_target_angle := steer_target * steering_max
 		var rate := steering_speed if steer_target != 0.0 else steering_return_speed
@@ -70,6 +70,7 @@ func _physics_process(delta: float) -> void:
 		av += roll_axis * _air_roll_speed + pitch_axis * _air_pitch_speed
 		angular_velocity = av
 		_steer_current = move_toward(_steer_current, 0.0, steering_return_speed * delta)
+
 
 func _is_grounded() -> bool:
 	for wheel: VehicleWheel3D in _wheels:

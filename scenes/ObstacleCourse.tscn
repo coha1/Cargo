@@ -18,17 +18,24 @@ roughness = 0.9
 use_collision = true
 
 [node name="Outer" type="CSGCylinder3D" parent="OuterWall" unique_id=1649963938]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.6401615, 0)
 radius = 121.0
-height = 8.0
+height = 20.0
 sides = 64
 material = SubResource("3")
 
 [node name="Inner" type="CSGCylinder3D" parent="OuterWall" unique_id=2131377792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.4792137, 0)
 operation = 2
 radius = 120.0
-height = 10.0
+height = 22.0
 sides = 64
 material = SubResource("3")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="OuterWall" unique_id=637757567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.099808, -120.18692)
+operation = 2
+size = Vector3(10, 10, 10)
 
 [node name="InnerRing" type="CSGCombiner3D" parent="." unique_id=1818934769]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28.495636, 0)
@@ -72,6 +79,70 @@ spin_sides = 4
 material = SubResource("StandardMaterial3D_j502b")
 
 [node name="FunboxACut" type="CSGBox3D" parent="FunboxA" unique_id=248932008]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 operation = 2
 size = Vector3(28, 3, 28)
+
+[node name="Ramp" type="CSGCombiner3D" parent="." unique_id=1016885320]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 98.598976, -3.7144985, 0)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Ramp" unique_id=699427236]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Ramp" unique_id=936212746]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0, -0.18649748, 0.6856967)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Ramp" unique_id=253864252]
+transform = Transform3D(-1, 4.371139e-08, 7.5710346e-08, 0, 0.8660254, -0.5, -8.742278e-08, -0.5, -0.8660254, 0, -0.18649748, -0.6860615)
+
+[node name="Ramp2" type="CSGCombiner3D" parent="." unique_id=808560007]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 116.485504, -3.7144985, 0)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Ramp2" unique_id=40246356]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Ramp2" unique_id=599773218]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0, -0.18649748, 0.6856967)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Ramp2" unique_id=1725419198]
+transform = Transform3D(-1, 4.371139e-08, 7.5710346e-08, 0, 0.8660254, -0.5, -8.742278e-08, -0.5, -0.8660254, 0, -0.18649748, -0.6860615)
+
+[node name="Ramp3" type="CSGCombiner3D" parent="." unique_id=1651463338]
+transform = Transform3D(9.196433, 0, 3.9275446, 0, 10, 0, -3.9275446, 0, 9.196433, 98.4859, -3.7144985, -43.000305)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Ramp3" unique_id=1077282591]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Ramp3" unique_id=1795250481]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0, -0.18649748, 0.6856967)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Ramp3" unique_id=1900754737]
+transform = Transform3D(-1, 4.371139e-08, 7.5710346e-08, 0, 0.8660254, -0.5, -8.742278e-08, -0.5, -0.8660254, 0, -0.18649748, -0.6860615)
+
+[node name="Ramp4" type="CSGCombiner3D" parent="." unique_id=821773884]
+transform = Transform3D(6.3240795, 0, 7.746355, 0, 10, 0, -7.746355, 0, 6.3240795, 66.137245, -7.2647476, -95.192215)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Ramp4" unique_id=652981158]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Ramp4" unique_id=139685672]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0, -0.18649748, 0.6856967)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Ramp4" unique_id=1777239188]
+transform = Transform3D(-1, 4.371139e-08, 7.5710346e-08, 0, 0.8660254, -0.5, -8.742278e-08, -0.5, -0.8660254, 0, -0.18649748, -0.6860615)
+
+[node name="Bridge" type="CSGCombiner3D" parent="." unique_id=56257797]
+use_collision = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bridge" unique_id=792358881]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, -42.455997, -119.42044)
+radius = 50.0
+height = 10.0
+sides = 64
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Bridge" unique_id=1540078927]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, -42.455997, -119.42044)
+operation = 2
+radius = 48.0
+height = 11.0
+sides = 64
