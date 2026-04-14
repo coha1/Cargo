@@ -60,7 +60,7 @@ func _build_visuals() -> void:
 	# ── Floating label (always faces camera) ──────────────────────────────────
 	var label := Label3D.new()
 	label.text = zone_label
-	label.position = Vector3(0.0, 7.5, 0.0)
+	label.position = Vector3(0.0, 9.5, 0.0)
 	label.font_size = 72
 	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	label.modulate = zone_color

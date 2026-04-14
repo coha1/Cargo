@@ -49,6 +49,7 @@ script = ExtResource("9")
 card_path = NodePath("../HUD/ObjectiveCard")
 pickup_zone_path = NodePath("../PickupZone")
 delivery_zone_path = NodePath("../DeliveryZone")
+car_path = NodePath("../Car")
 
 [node name="Car" parent="." unique_id=1934986737 instance=ExtResource("2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.344904, 276.31876)
