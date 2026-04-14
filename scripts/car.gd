@@ -32,9 +32,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	var throttle := Input.get_axis("car_accelerate", "car_brake")
-	var steer_target := Input.get_axis("car_steer_right", "car_steer_left")
-	var ebrake := Input.is_action_pressed("car_ebrake")
+	var throttle := Input.get_axis("accelerate", "brake")
+	var steer_target := Input.get_axis("steer_right", "steer_left")
+	var ebrake := Input.is_action_pressed("ebrake")
 
 	if _is_grounded():
 		_air_roll_speed = 0.0
@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 		# Holding e-brake while airborne boosts the speed ceiling for fast deliberate spins.
 		var boost := air_boost_multiplier if ebrake else 1.0
 		_air_roll_speed = move_toward(_air_roll_speed, steer_target * air_roll_speed_max * boost, air_roll_accel * delta)
-		var pitch := Input.get_axis("car_pitch_down", "car_pitch_up")
+		var pitch := Input.get_axis("pitch_forward", "pitch_back")
 		_air_pitch_speed = move_toward(_air_pitch_speed, pitch * air_pitch_speed_max * boost, air_pitch_accel * delta)
 		# Strip the existing roll and pitch components from angular velocity
 		# and replace them with the accumulated values, leaving yaw untouched.
