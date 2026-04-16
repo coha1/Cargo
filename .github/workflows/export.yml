@@ -38,7 +38,9 @@ jobs:
         run: |
           curl -L -o butler.zip https://github.com/itchio/butler/releases/latest/download/butler-linux-amd64.zip
           unzip -q butler.zip
-          chmod +x butler
-          ./butler push exports/web ${{ secrets.ITCH_USERNAME }}/${{ secrets.ITCH_GAME_ID }}:web
+          ls -la
+          chmod +x butler-linux-amd64
+          ./butler-linux-amd64 push exports/web ${{ secrets.ITCH_USERNAME }}/${{ secrets.ITCH_GAME_ID }}:web
         env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}        env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
