@@ -36,7 +36,7 @@ jobs:
 
       - name: Deploy to itch.io
         run: |
-          wget -q https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default -O butler.zip
+          curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
           unzip -q butler.zip
           chmod +x butler
           ./butler push exports/web ${{ secrets.ITCH_USERNAME }}/${{ secrets.ITCH_GAME_ID }}:web
