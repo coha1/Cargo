@@ -30,6 +30,12 @@ var _feedback_label: Label
 var _tracker:        _ProgressTracker
 var _pulse_tween:    Tween
 
+# Swipe-to-accept/decline (touch only)
+const _SWIPE_THRESHOLD: float = 60.0
+var _swipe_enabled: bool = false
+var _swipe_touch_index: int = -1
+var _swipe_start_x: float = 0.0
+
 
 # ── Lifecycle ─────────────────────────────────────────────────────────────────
 
@@ -53,6 +59,7 @@ func _ready() -> void:
 	_build_ui()
 	_set_state(State.AVAILABLE)
 	call_deferred("_fit")
+	_swipe_enabled = DisplayServer.is_touchscreen_available()
 
 
 # ── UI construction ───────────────────────────────────────────────────────────
@@ -190,11 +197,32 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		_set_state(State.ACTIVE)
 		order_accepted.emit()
-	elif event.is_action_pressed("decline_order") \
-			and _state != State.AVAILABLE:
+		return
+	elif event.is_action_pressed("decline_order") and _state != State.AVAILABLE:
 		get_viewport().set_input_as_handled()
 		_set_state(State.AVAILABLE)
 		order_declined.emit()
+		return
+
+	if not _swipe_enabled:
+		return
+
+	if event is InputEventScreenTouch:
+		if event.pressed and _swipe_touch_index == -1 \
+				and get_global_rect().has_point(event.position):
+			_swipe_touch_index = event.index
+			_swipe_start_x = event.position.x
+		elif not event.pressed and event.index == _swipe_touch_index:
+			_swipe_touch_index = -1
+			var delta_x: float = event.position.x - _swipe_start_x
+			if delta_x > _SWIPE_THRESHOLD and _state == State.AVAILABLE:
+				get_viewport().set_input_as_handled()
+				_set_state(State.ACTIVE)
+				order_accepted.emit()
+			elif delta_x < -_SWIPE_THRESHOLD and _state != State.AVAILABLE:
+				get_viewport().set_input_as_handled()
+				_set_state(State.AVAILABLE)
+				order_declined.emit()
 
 
 # ── Public API ────────────────────────────────────────────────────────────────
