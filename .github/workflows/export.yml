@@ -1,9 +1,34 @@
-container:
-  image: barichello/godot-ci:4.6
+name: Export & Deploy
 
-steps:
-  ...
-  - name: Setup export templates
-    run: |
-      mkdir -p /github/home/.local/share/godot/export_templates/4.6.stable
-      mv /root/.local/share/godot/export_templates/4.6.stable /github/home/.local/share/godot/export_templates/4.6.stable
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:4.6
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Setup export templates
+        run: |
+          mkdir -p /github/home/.local/share/godot/export_templates/4.6.stable
+          mv /root/.local/share/godot/export_templates/4.6.stable /github/home/.local/share/godot/export_templates/4.6.stable
+
+      - name: Export Web
+        run: |
+          mkdir -p exports/web
+          godot --headless --export-release "Web" exports/web/index.html
+
+      - name: Deploy to itch.io
+        run: |
+          butler push exports/web ${{ secrets.ITCH_USERNAME }}/${{ secrets.ITCH_GAME_ID }}:web
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
