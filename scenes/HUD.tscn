@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://7uyxvbxjg2yi" path="res://scripts/hud.gd" id="1"]
 [ext_resource type="Script" uid="uid://dsigm6hr804o1" path="res://scripts/objective_card.gd" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/TouchControls.tscn" id="3"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1494043375]
 script = ExtResource("1")
@@ -25,3 +26,5 @@ text = "Coins: 0 / 0"
 
 [node name="ObjectiveCard" type="PanelContainer" parent="." unique_id=1909287784]
 script = ExtResource("2")
+
+[node name="TouchControls" parent="." instance=ExtResource("3")]
