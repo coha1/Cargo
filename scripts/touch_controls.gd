@@ -2,16 +2,34 @@ class_name TouchControls
 extends Control
 
 
-## Force the overlay visible regardless of device — useful for layout testing in the editor.
-@export var force_visible: bool = false
+## Force touch mode on at startup — useful for layout testing in the editor.
+@export var force_touch_on: bool = false
+
+
+@onready var _controls_layer: Control = $VirtualGamepad
+@onready var _toggle_button: Button = $ToggleLayer/ToggleButton
+
+var _touch_active: bool = false
 
 
 func _ready() -> void:
-	if not force_visible and not DisplayServer.is_touchscreen_available():
-		visible = false
-		return
-	_strip_mouse_bindings()
-	print(get_path(), ": touch controls active")
+	_toggle_button.pressed.connect(_on_toggle_pressed)
+	_set_touch_active(force_touch_on)
+
+
+func _on_toggle_pressed() -> void:
+	_set_touch_active(not _touch_active)
+
+
+func _set_touch_active(active: bool) -> void:
+	_touch_active = active
+	_controls_layer.visible = active
+	_toggle_button.text = "Touch: ON" if active else "Touch: OFF"
+	_toggle_button.release_focus()
+	if active:
+		_strip_mouse_bindings()
+	else:
+		InputMap.load_from_project_settings()
 
 
 ## Removes all InputEventMouseButton bindings from every action so that
