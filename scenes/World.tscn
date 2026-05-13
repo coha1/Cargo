@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://curntqcje8qsv" path="res://scripts/objective_manager.gd" id="9"]
 [ext_resource type="PackedScene" path="res://scenes/PickupZone.tscn" id="10"]
 [ext_resource type="PackedScene" path="res://scenes/DeliveryZone.tscn" id="11"]
+[ext_resource type="PackedScene" uid="uid://bu66bi0y40wmb" path="res://assets/kenney_city-kit-suburban_20/Models/GLB format/building-type-a.glb" id="11_h1bdy"]
 
 [sub_resource type="Environment" id="6"]
 background_mode = 1
@@ -17,6 +18,9 @@ background_color = Color(0.6, 0.75, 0.92, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.5, 0.55, 0.65, 1)
 ambient_light_energy = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h1bdy"]
+size = Vector3(1.2269287, 0.64404297, 0.7324219)
 
 [node name="World" type="Node3D" unique_id=1168583943]
 script = ExtResource("1")
@@ -59,3 +63,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 276.31876)
 script = ExtResource("5")
 
 [node name="Camera3D" type="Camera3D" parent="CameraFollow" unique_id=1369377213]
+
+[node name="building-type-a2" parent="." unique_id=1567837554 instance=ExtResource("11_h1bdy")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -7.787384, -1.6171074, 349.4926)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="building-type-a2" unique_id=1142273513]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="building-type-a2/RigidBody3D" unique_id=533140244]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001159668, 0.17797852, 0.05419922)
+shape = SubResource("BoxShape3D_h1bdy")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="building-type-a2/RigidBody3D" unique_id=718438227]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0.001159668, 0.35981107, 0.102191925)
+shape = SubResource("BoxShape3D_h1bdy")
